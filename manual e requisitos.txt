@@ -1,0 +1,230 @@
+Manual do Sistema: ResearchFlow v2.1
+
+Sistema de Gestão de Projetos de Pesquisa
+
+?
+
+?? 1. Descrição Geral
+
+O ResearchFlow v2.1 é um sistema em Python desenvolvido para gerenciar projetos de pesquisa.
+Ele permite criar novos projetos, cadastrar membros de equipe, acompanhar o status e listar todos os projetos ativos.
+
+O objetivo é oferecer um controle prático e intuitivo de informações como:
+	•	Título do projeto
+	•	Data limite
+	•	Orçamento estimado
+	•	Áreas de conhecimento
+	•	Membros da equipe
+	•	Status do projeto
+
+?
+
+?? 2. Requisitos do Sistema
+
+?? Requisitos de Hardware
+	•	Processador: qualquer CPU com suporte a Python (Intel, AMD ou ARM)
+	•	Memória RAM: mínimo de 2 GB
+	•	Armazenamento: mínimo de 100 MB livres
+	•	Sistema operacional:
+	•	Windows 7/8/10/11
+	•	Linux (Ubuntu, Fedora, etc.)
+	•	macOS
+
+?? Requisitos de Software
+	•	Python 3.8 ou superior
+	•	Nenhuma biblioteca externa é necessária (usa apenas módulos padrão do Python)
+	•	Um terminal/console funcional:
+	•	Prompt de comando (Windows)
+	•	Terminal (Linux/macOS)
+
+?? Verificação de instalação do Python
+
+Para verificar se o Python está instalado:
+
+python --version
+
+ou (dependendo do sistema)
+
+python3 --version
+
+3. Como Executar o Programa
+
+Passo 1?? — Salve o código
+	•	Copie todo o código fornecido e salve em um arquivo com nome:
+
+researchflow.py
+
+Passo 2?? — Acesse o diretório
+
+Abra o terminal e navegue até a pasta onde o arquivo está salvo:
+
+cd caminho/da/pasta
+
+Passo 3?? — Execute o sistema
+
+No terminal, digite:
+
+python researchflow.py
+
+ou
+
+python3 researchflow.py
+
+O menu principal será exibido na tela.
+
+?
+
+?? 4. Menu Principal e Funcionalidades
+
+Ao iniciar, o sistema mostra este menu:
+
+==================================================
+  ResearchFlow v2.1 - Gestão de Projetos de Pesquisa
+==================================================
+1. Iniciar Novo Projeto
+2. Listar Projetos
+3. Detalhar Projeto
+4. Adicionar Membro à Equipe
+5. Atualizar Status do Projeto
+6. Sair
+==================================================
+Escolha uma opção (1-6):
+
+Opção 1 – Iniciar Novo Projeto
+
+Cria um novo projeto com:
+	•	Título
+	•	Data limite (DD/MM/AAAA)
+	•	Orçamento em reais (R$)
+	•	Áreas de conhecimento (separadas por vírgula)
+
+?? Exemplo:
+
+Título do Projeto: Sistema de IA Educacional
+Data Limite: 15/12/2025
+Orçamento Estimado (R$): 4500
+Áreas de Conhecimento: Inteligência Artificial, Educação, Computação
+
+O sistema valida automaticamente o formato da data e do orçamento.
+
+?
+
+?? Opção 2 – Listar Projetos
+
+Mostra todos os projetos cadastrados com informações resumidas:
+
+ID: 1 | Título: Sistema de IA Educacional | Data Limite: 15/12/2025 | Status: PENDENTE | Membros: 0
+
+Opção 3 – Detalhar Projeto
+
+Mostra todas as informações completas de um projeto específico.
+
+?? Exemplo:
+
+Digite o ID do projeto para detalhar: 1
+--- Detalhes do Projeto ID: 1 ---
+Título: Sistema de IA Educacional
+Data Limite: 15/12/2025
+Orçamento: R$ 4500.00
+Status: PENDENTE
+Áreas de Conhecimento (Set): {INTELIGÊNCIA ARTIFICIAL, EDUCAÇÃO, COMPUTAÇÃO}
+Total de Membros (List): 2
+Nomes dos Membros: João, Maria
+
+Opção 4 – Adicionar Membro à Equipe
+
+Permite cadastrar pessoas envolvidas no projeto.
+
+?? Exemplo:
+
+Digite o ID do projeto para adicionar membro: 1
+Nome do Membro: João Silva
+Função no Projeto: Pesquisador
+
+O sistema impede nomes duplicados e não permite adicionar membros se o projeto estiver “CONCLUÍDO”.
+
+?
+
+?? Opção 5 – Atualizar Status do Projeto
+
+Atualiza o andamento do projeto.
+Os status disponíveis são:
+	1.	PENDENTE
+	2.	EM ANDAMENTO
+	3.	CONCLUÍDO
+	4.	CANCELADO
+
+?? Exemplo:
+
+Digite o ID do projeto para atualizar o status: 1
+Status Atual: PENDENTE
+Opções de Status:
+1. PENDENTE
+2. EM ANDAMENTO
+3. CONCLUÍDO
+4. CANCELADO
+Escolha o novo status (1-4): 2
+[SUCESSO] Status atualizado para 'EM ANDAMENTO'.
+
+Opção 6 – Sair
+
+Finaliza o programa:
+
+Encerrando o ResearchFlow. Até mais!
+
+5. Estrutura Interna de Dados
+
+O sistema usa:
+	•	Dicionário global (projetos): guarda todos os projetos criados
+	•	Chave: ID do projeto (número inteiro)
+	•	Valor: outro dicionário com dados do projeto
+
+Cada projeto contém:
+
+{
+  "titulo": "Exemplo",
+  "data_limite": "10/12/2025",
+  "orcamento": 5000.0,
+  "status": "PENDENTE",
+  "areas": {"IA", "EDUCAÇÃO"},
+  "membros": [
+      {"nome": "João", "funcao": "Líder"},
+      {"nome": "Maria", "funcao": "Assistente"}
+  ]
+}
+
+6. Dicas de Uso
+
+? Use sempre datas válidas no formato DD/MM/AAAA.
+? Não use caracteres especiais em nomes de arquivos ou áreas.
+? Para limpar o terminal, o sistema faz isso automaticamente (com os.system).
+? Caso feche o programa, os dados são perdidos — este sistema ainda não salva em arquivo.
+?? (Opcional: você pode futuramente salvar o dicionário projetos em JSON para manter os registros.)
+
+?
+
+?? 7. Possíveis Erros e Soluções
+
+Erro
+Causa
+Solução
+[ERRO] Formato de data inválido
+Data digitada errada
+Use DD/MM/AAAA
+[ERRO] Orçamento deve ser um número
+Valor com letra ou vírgula
+Use ponto: 3500.50
+[ERRO] ID deve ser um número inteiro
+Digitou letras no ID
+Digite apenas números
+[ATENÇÃO] Projeto está concluído
+Projeto já finalizado
+Não é possível adicionar membros
+
+
+8. Créditos
+
+?? ResearchFlow v2.1
+?? Ano: 2025
+?? Área de Foco: Inteligência Artificial
+????? Desenvolvido para estudos de Python e gerenciamento de projetos.
